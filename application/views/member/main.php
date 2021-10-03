@@ -1,7 +1,3 @@
-  <style type="text/css">
-
-  </style>
-
   <div class="card">
 
               <div class="card-header text-right">
@@ -21,7 +17,7 @@
                     <th>วันเกิด</th>
                     <th>ที่อยู่</th>
                     <th>อัปเดต</th>
-                    <th>#</th>
+                    <!--<th>#</th>-->
                   </tr>
                   </thead>
                   <tbody>
@@ -29,20 +25,22 @@
                   foreach($dataList as $key=>$data) {
                   ?>
                   <tr>
-                    <td align="center"><?php echo $data['id'];?></td>
+                    <td><?php echo $data['id'];?></td>
                     <td align="center"><?php echo $data['card_idnumber'];?></td>
                     <td><?php echo $data['title_name']?></td>
                     <td><?php echo $data['name'];?></td>
                     <td><?php echo $data['lastname'];?></td>
                     <td align="center"><?php echo $data['telno'];?></td>
-                    <td align="center"><?php echo $data['date_ofbirth'];?></td>
+                    <td align="center"><?php echo date2thai($data['date_ofbirth']);?></td>
                     <td align="center"><?php echo $data['idhouse'];?></td>
                     <td align="center"><?php echo date2Thai($data['mod_date']);?><br/><?php echo $data['mod_user'];?></td>
                     <!--<td align="center"><?php if($data['status']=='1'){echo 'Active';}else{echo 'Inactive';}?></td>-->
+                <!--    
                     <td  width="10%">
                       <button data-toggle="modal" data-target="#myModalEdit<?php echo $data['id'];?>" type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
                       <button onclick="if(confirm('ยืนยัน ลบ!')){dlt(<?php echo $data['id'];?>)}" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                     </td>
+                  -->
                   </tr>
 
 
@@ -192,7 +190,7 @@
                     <th>วันเกิด</th>
                     <th>ที่อยู่</th>
                     <th>อัปเดต</th>
-                    <th>#</th>
+                    <!--<th>#</th>-->
                   </tr>
                   </tfoot>
                 </table>

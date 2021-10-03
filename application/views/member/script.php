@@ -4,7 +4,7 @@
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
       "order": [[ 0, "desc" ]]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
     /*
     $('#example2').DataTable({
       "paging": true,
@@ -86,6 +86,9 @@ $("#bt_addSubmit").click(function(){
         
         if(data.status=='success') {
           sweetAlert('success',data.message);
+          
+          socket.emit('noti message',data.rs);
+
           location.reload();
         }else {
           sweetAlert('danger',data.message);
@@ -118,9 +121,32 @@ function dlt(id) {
 }
 
 function isNumeric(str) {
-if (typeof str != "string") return false // we only process strings!  
-return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-       !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+  if (typeof str != "string") return false // we only process strings!  
+  return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+        !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+}
+
+socket.on('new message', function(msg) {
+  console.log("new message!");
+  update(msg);
+});
+
+function update(msg) {
+  if(msg.length) {
+    $('#example1').DataTable().destroy();
+      var c = "even";
+    if($("#example1 tbody tr:last-child").hasClass("odd")) {
+      c = "odd";
+    }
+
+   $('#example1').find('tbody').prepend('<tr class="'+c+'"><td class="dtr-control" tabindex="0">'+msg[0].id+'</td><td align="center" class="sorting_1">'+msg[0].card_idnumber+'</td><td>'+msg[0].title_name+'</td><td>'+msg[0].name+'</td><td>'+msg[0].lastname+'</td><td align="center">'+msg[0].telno+'</td><td align="center">'+msg[0].date_ofbirth.substr(8,2)+'/'+msg[0].date_ofbirth.substr(5,2)+'/'+msg[0].date_ofbirth.substr(0,4)+'</td><td align="center">'+msg[0].idhouse+'</td><td align="center">'+msg[0].mod_date.substr(8,2)+'/'+msg[0].mod_date.substr(5,2)+'/'+msg[0].mod_date.substr(0,4)+msg[0].mod_date.substr(10,5)+'<br/>'+msg[0].mod_user+'</td></tr>');
+   
+   $("#example1").DataTable({
+    "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+      "order": [[ 0, "desc" ]]
+    }).draw();
+  }
 }
 
 </script>

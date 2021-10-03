@@ -124,14 +124,27 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
           <li class="nav-item">
-            <a href="<?php echo site_url('member');?>" class="nav-link <?php if($this->uri->segment(1)=='member'){?> active <?php }?>">
+            <a href="<?php echo site_url('register');?>" class="nav-link <?php if($this->uri->segment(1)=='register'){?> active <?php }?>">
+              <i class="nav-icon fas fa-plus"></i>
+              <p>
+                หน้าสมัครสมาชิก
+              </p>
+            </a>
+          </li>
+         
+               <li class="nav-item">
+            <a href="<?php echo site_url('dashboard');?>" class="nav-link <?php if($this->uri->segment(1)=='dashboard'){?> active <?php }?>">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 รายชื่อผู้สมัคร
               </p>
             </a>
           </li>
+
+
+
           <li class="nav-item">
             <a href="<?php echo site_url('register');?>" class="nav-link">
               <i class="nav-icon 	fas fa-sign-in-alt"></i>

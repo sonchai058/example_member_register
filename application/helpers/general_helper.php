@@ -12,8 +12,8 @@ class my_general{
 function date2thai($datetime='') {
 	$arr=explode(' ',$datetime);
 	$date = $arr[0];
-	$time = $arr[1];
-	return substr($date,8,2).'/'.substr($date,5,2).'/'.(substr($date,0,4)).' '.substr($time,0,5);
+	$time = @$arr[1];
+	return substr($date,8,2).'/'.substr($date,5,2).'/'.((substr($date,0,4)+543)).' '.substr($time,0,5);
 }
 function thai2date($date='') {
 	return substr($date,0,2).'/'.substr($date,3,2).'/'.substr($date,6,4);

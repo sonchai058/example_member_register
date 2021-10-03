@@ -54,5 +54,9 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
+$route['dashboard'] = 'member/dashboard';
+$route['register'] = 'member/register';
+$route['ajax_data'] = 'member/ajax_data';
+
 //$route['DecCredit'] = ;
 //$route['EventLog'] = ;

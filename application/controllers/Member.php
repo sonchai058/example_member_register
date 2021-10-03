@@ -25,16 +25,20 @@ class Member extends CI_Controller {
         parent::__construct();
         $this->load->database();
         $this->load->model('common_model');
+        $this->load->model('address_model');
         $this->load->helper('general_helper');
 		$this->load->library('session');
 
-        //Please Check Login 
+    }
+
+    public function index() {
+        redirect('register','refresh');
     }
 
 
-	public function index()
+	public function dashboard()
 	{
-		$data['title'] = "ลงทะเบียน (Register)";
+		$data['title'] = "รายชื่อผู้สมัคร (Dashboard)";
 		$data['content_file'] = "member";
 
 		$data['link_head'] = $data['content_file']."/link_head";
@@ -49,23 +53,17 @@ class Member extends CI_Controller {
 
 	public function register()
 	{
-		$data['title'] = "รายชื่อผู้สมัคร (Dashboard)";
+		$data['title'] = "ลงทะเบียน (Register)";
 		$data['content_file'] = "member";
 
 		$data['link_head'] = $data['content_file']."/link_head";
 		$data['link_foo'] = $data['content_file']."/link_foo";
 		$data['script'] = $data['content_file']."/script";
-		$data['content'] = $data['content_file']."/main";
+		$data['content'] = $data['content_file']."/register";
 
-		$data['dataList'] = $this->common_model->custom_query("select a.*,b.type_name from member as a left join member_type as b on a.member_type_id=b.member_type_id where a.status!=0 order by a.mod_date DESC");
-		
 		$this->load->view('layout',$data);//
 	}
-	/*
-	public function test(){
-		die('..1');
-	}
-	*/
+
 	function save() {
         //$this->load->helper('security');
         header('Content-Type: application/json');

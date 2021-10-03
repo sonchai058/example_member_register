@@ -1,6 +1,12 @@
--Token API csrf
--พศ ไทย
--จังหวัด select2
+Link Test
 
 
-https://stackoverflow.com/questions/5507234/use-basic-authentication-with-jquery-and-ajax
+
+
+
+Rest API log test
+link : http://localhost/example_member_register/
+Basic Authen , Post Method
+username = user, password = j48854siw
+body parameter = id=1 , datesort='2021-01-01' , datedest = '2021-12-31'
+

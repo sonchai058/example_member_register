@@ -8,3 +8,8 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0');?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0');?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+  <link href="<?php echo base_url('assets/select2-4.1.0-rc.0/dist/css/select2.css')?>" rel="stylesheet"/>
+
+
+  <link href=<?php echo base_url("assets/bootstrap-datepicker-thai/css/datepicker.css")?> rel="stylesheet">
+

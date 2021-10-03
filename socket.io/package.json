@@ -1,0 +1,10 @@
+{
+  "name": "realtime-chat-service",
+  "description": "realtime chart service",
+  "dependencies": {
+    "mysql": "^2.16.0",
+    "mysql-events": "0.0.7",
+    "mysqli": "^3.1.4",
+    "socket.io": "^1.7.4"
+  }
+}

@@ -51,7 +51,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <label>วัน/เดือน/ปีเกิด (พศ)</label>
-                                            <input type="date" class="form-control" name="date_ofbirth" placeholder="วัน/เดือน/ปีเกิด (พศ)" value="">
+                                            <input autocomplete="off" type="text" class="form-control" id="date_ofbirth" name="date_ofbirth" placeholder="วัน/เดือน/ปีเกิด (พศ)" value="">
                                         </div>
                                     </div>
                                     <br/>
@@ -76,25 +76,41 @@
                                         </div>
                                     </div>
                                     <br/>
-                                    <!--
                                     <div class="row">
                                         <div class="col-12">
-                                            <label>จังหวัด <font color="red">*</font></label>
-                                            <select class="form-control" placeholder="จังหวัด" name="province_id" value="<?php echo $data['province_id'];?>">
+                                            <label>จังหวัด</label>
+                                            <select autocomplete="off" class="form-control" placeholder="เลือกจังหวัด" name="province_id" value="" id="province_id">
+                                                <option value="">เลือกจังหวัด</option>
                                             <?php
                                             $rs = array();
-                                            //$rs = $this->common_model->custom_query("select * from address_code ");
+                                            $rs = $this->address_model->province_list();
                                             foreach($rs as $key1=>$data1) {
                                             ?>
-                                              <option <?php if($data['member_type_id']==$data1['member_type_id']){?> selected <?php }?> value="<?php echo $data1['member_type_id'];?>"><?php echo $data1['type_name'];?></option>
+                                              <option  value="<?php echo $data1['ProvinceID'];?>"><?php echo $data1['ProvinceThai'];?></option>
                                             <?php
                                             }
                                             ?>
                                             </select>
                                         </div>
                                     </div>
-                                    -->
-
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label>อำเภอ</label>
+                                            <select autocomplete="off" class="form-control" placeholder="เลือกอำเภอ" name="district_id" value="" id="district_id">
+                                                <option value="">เลือกอำเภอ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label>ตำบล</label>
+                                            <select autocomplete="off" class="form-control" placeholder="เลือกตำบล" name="tambon_id" value="" id="tambon_id">
+                                                <option value="">เลือกตำบล</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <br/>
                                     <div class="row">
                                         <div class="col-12 text-center" style="text-align:center">

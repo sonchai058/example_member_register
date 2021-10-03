@@ -31,6 +31,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0');?>/plugins/summernote/summernote-bs4.min.css">
 
+
   <link rel="icon" href="<?php echo base_url('assets/images/icon.png'); ?>" type="image/x-icon">
   <style type="text/css">
   * {
@@ -221,6 +222,7 @@
 <!-- jQuery -->
 <script src="<?php echo base_url('assets/AdminLTE-3.1.0');?>/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
+
 <script src="<?php echo base_url('assets/AdminLTE-3.1.0');?>/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 

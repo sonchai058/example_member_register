@@ -58,5 +58,4 @@ $route['dashboard'] = 'member/dashboard';
 $route['register'] = 'member/register';
 $route['ajax_data'] = 'member/ajax_data';
 
-//$route['DecCredit'] = ;
-//$route['EventLog'] = ;
+$route['GetMemberLog'] = "ExampleAPI/GetMemberLog";

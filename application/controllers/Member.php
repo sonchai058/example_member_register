@@ -46,7 +46,7 @@ class Member extends CI_Controller {
 		$data['script'] = $data['content_file']."/script";
 		$data['content'] = $data['content_file']."/main";
 
-		$data['dataList'] = $this->common_model->custom_query("select * from member where status=1 order by mod_date DESC");
+		$data['dataList'] = $this->common_model->custom_query("select a.*,b.* from member as a left join address_code as b on a.tambon_id=b.TambonID  where a.status=1 order by a.mod_date DESC");
 		
 		$this->load->view('layout',$data);//
 	}
@@ -63,6 +63,43 @@ class Member extends CI_Controller {
 
 		$this->load->view('layout',$data);//
 	}
+
+    public function getDistrict_list() {
+        header('Content-Type: application/json');
+		$ProvinceID = $this->input->input_stream('ProvinceID', true);
+        if($ProvinceID!='') {
+			$rs = $this->address_model->district_list($ProvinceID);
+            $response = array(
+                'status' => 'success',
+                'message'=> '',
+                'rs'=>$rs
+            );
+        }else {
+            $response = array(
+                'status' => 'error',
+                'message'=> 'พบข้อผิดพลาด!',
+           );
+        }
+        echo json_encode($response);
+    }
+    public function getTambon_list() {
+        header('Content-Type: application/json');
+		$DistrictID = $this->input->input_stream('DistrictID', true);
+        if($DistrictID!='') {
+			$rs = $this->address_model->tambon_list($DistrictID);
+            $response = array(
+                'status' => 'success',
+                'message'=> '',
+                'rs'=>$rs
+            );
+        }else {
+            $response = array(
+                'status' => 'error',
+                'message'=> 'พบข้อผิดพลาด!',
+           );
+        }
+        echo json_encode($response);
+    }
 
 	function save() {
         //$this->load->helper('security');
@@ -103,7 +140,7 @@ class Member extends CI_Controller {
 				'name'							      => trim($name),
 				'lastname'                            => trim($lastname),
 				'card_idnumber'                       => trim($card_idnumber),
-                'date_ofbirth'                        => trim($date_ofbirth),
+                'date_ofbirth'                        => thai2date(trim($date_ofbirth)),
 				'telno'                               => trim($telno),
 				'idhouse'                             => trim($idhouse),
 				'moo'					              => trim($moo),
@@ -119,7 +156,7 @@ class Member extends CI_Controller {
 			);
 
             $id = $this->common_model->insert('member',$data_insert);
-            $rs = $this->common_model->custom_query("select * from member where id='{$id}' limit 1");
+            $rs = $this->common_model->custom_query("select a.*,b.* from member as a left join address_code as b on a.tambon_id=b.TambonID  where a.id='{$id}' limit 1");
             //tb_member_wallet
 
             $response = array(
@@ -130,6 +167,7 @@ class Member extends CI_Controller {
         }
         echo json_encode($response);
     }
+    /*
     function update() {
         //$this->load->helper('security');
         header('Content-Type: application/json');
@@ -201,4 +239,5 @@ class Member extends CI_Controller {
         }
         echo json_encode($response);
     }
+    */
 }

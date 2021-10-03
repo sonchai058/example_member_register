@@ -1,15 +1,16 @@
   <div class="card">
-
+<!--
               <div class="card-header text-right">
                 <button data-toggle="modal" data-target="#myModalAdd" onclick="" class="btn btn-primary" type="button"><i class="fas fa-plus"></i> Add</button>
               </div>
+-->
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>ID Label</th>
-                    <th>เลขบัตร ปชช.</th>
+                    <th width="7%">ID Label</th>
+                    <th width="20%">เลขบัตร ปชช.</th>
                     <th>คำนำหน้า</th>
                     <th>ชื่อ</th>
                     <th>นามสกุล</th>
@@ -25,14 +26,14 @@
                   foreach($dataList as $key=>$data) {
                   ?>
                   <tr>
-                    <td><?php echo $data['id'];?></td>
+                    <td align="center"><?php echo $data['id'];?></td>
                     <td align="center"><?php echo $data['card_idnumber'];?></td>
                     <td><?php echo $data['title_name']?></td>
                     <td><?php echo $data['name'];?></td>
                     <td><?php echo $data['lastname'];?></td>
                     <td align="center"><?php echo $data['telno'];?></td>
                     <td align="center"><?php echo date2thai($data['date_ofbirth']);?></td>
-                    <td align="center"><?php echo $data['idhouse'];?></td>
+                    <td><?php echo $data['idhouse'];?> หมู่.<?php echo $data['moo'];?> ถ.<?php echo $data['road'];?> ต.<?php echo $data['TambonThaiShort'];?> อ.<?php echo $data['DistrictThaiShort'];?> จ.<?php echo $data['ProvinceThai'];?></td>
                     <td align="center"><?php echo date2Thai($data['mod_date']);?><br/><?php echo $data['mod_user'];?></td>
                     <!--<td align="center"><?php if($data['status']=='1'){echo 'Active';}else{echo 'Inactive';}?></td>-->
                 <!--    
@@ -127,25 +128,25 @@
                                             <input type="text" class="form-control" name="road" placeholder="ถนน" value="<?php echo $data['road'];?>">
                                         </div>
                                     </div>
-                                    <br/>
                                     <!--
+                                    <br/>
                                     <div class="row">
                                         <div class="col-12">
                                             <label>จังหวัด <font color="red">*</font></label>
                                             <select class="form-control" placeholder="จังหวัด" name="province_id" value="<?php echo $data['province_id'];?>">
                                             <?php
                                             $rs = array();
-                                            //$rs = $this->common_model->custom_query("select * from address_code ");
+                                            $rs = $this->address_model->province_list();
                                             foreach($rs as $key1=>$data1) {
                                             ?>
-                                              <option <?php if($data['member_type_id']==$data1['member_type_id']){?> selected <?php }?> value="<?php echo $data1['member_type_id'];?>"><?php echo $data1['type_name'];?></option>
+                                              <option  value="<?php echo $data1['ProvinceID'];?>"><?php echo $data1['ProvinceThai'];?></option>
                                             <?php
                                             }
                                             ?>
                                             </select>
                                         </div>
                                     </div>
-                                        -->
+                                    -->
                                     <br/>
                                     <div class="row">
                                         <div class="col-12">
@@ -282,25 +283,23 @@
                                         </div>
                                     </div>
                                     <br/>
-                                    <!--
                                     <div class="row">
                                         <div class="col-12">
-                                            <label>จังหวัด <font color="red">*</font></label>
-                                            <select class="form-control" placeholder="จังหวัด" name="province_id" value="<?php echo $data['province_id'];?>">
+                                            <label>จังหวัด</label>
+                                            <select class="form-control" placeholder="จังหวัด" name="province_id" value="" id="province_id">
+                                                <option value="">เลือกจังหวัด</option>
                                             <?php
                                             $rs = array();
-                                            //$rs = $this->common_model->custom_query("select * from address_code ");
+                                            $rs = $this->address_model->province_list();
                                             foreach($rs as $key1=>$data1) {
                                             ?>
-                                              <option <?php if($data['member_type_id']==$data1['member_type_id']){?> selected <?php }?> value="<?php echo $data1['member_type_id'];?>"><?php echo $data1['type_name'];?></option>
+                                              <option  value="<?php echo $data1['ProvinceID'];?>"><?php echo $data1['ProvinceThai'];?></option>
                                             <?php
                                             }
                                             ?>
                                             </select>
                                         </div>
                                     </div>
-                                    -->
-
                                     <br/>
                                     <div class="row">
                                         <div class="col-12 text-center" style="text-align:center">

@@ -1,6 +1,8 @@
 Link Test
 http://119.59.115.195/example_member_register
 
+NodeJS Service
+http://119.59.115.195:3001
 
 Rest API log test
 link : http://119.59.115.195/example_member_register

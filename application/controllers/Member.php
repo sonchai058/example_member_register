@@ -105,7 +105,7 @@ class Member extends CI_Controller {
         //$this->load->helper('security');
         header('Content-Type: application/json');
 
-        $title_name = $this->input->input_stream('title_name', true);
+        $title_name = $this->input->input_stream('title_name', true); //XSS & CSRF Clean
 		$name = $this->input->input_stream('name', true);
         $lastname = $this->input->input_stream('lastname', true);
         $card_idnumber = $this->input->input_stream('card_idnumber', true);

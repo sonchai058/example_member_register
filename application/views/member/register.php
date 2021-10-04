@@ -11,7 +11,7 @@
                                     
                                     <div class="row">
                                         <div class="col-12">
-                                            <label>คำนำหน้า <font color="red">*</font></label>
+                                            <label>คำนำหน้า</label>
                                             <select class="form-control" placeholder="คำนำหน้า" name="title_name" value="นาย">
                                                 <option value="นาย">นาย</option>
                                                 <option value="นาง">นาง</option>

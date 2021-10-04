@@ -64,7 +64,7 @@
                                     
                                     <div class="row">
                                         <div class="col-12">
-                                            <label>คำนำหน้า <font color="red">*</font></label>
+                                            <label>คำนำหน้า</label>
                                             <select class="form-control" placeholder="คำนำหน้า" name="title_name" value="<?php echo $data['title_name'];?>">
                                                 <option <?php if($data['title_name']=='นาย'){?> selected <?php }?> value="นาย">นาย</option>
                                                 <option <?php if($data['title_name']=='นาง'){?> selected <?php }?> value="นาง">นาง</option>

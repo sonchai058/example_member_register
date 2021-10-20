@@ -28,7 +28,6 @@ class Member extends CI_Controller {
         $this->load->model('address_model');
         $this->load->helper('general_helper');
 		$this->load->library('session');
-
     }
 
     public function index() {
